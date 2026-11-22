@@ -207,3 +207,31 @@ footer {
     grid-template-columns: 1fr;
   }
 }
+
+/* Tag-Wolke */
+
+.tag-section {
+  margin-top: 55px;
+}
+
+.tag-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 25px;
+}
+
+.tag-cloud a {
+  display: inline-block;
+  padding: 8px 18px;
+  background: #eeece4;
+  border-radius: 20px;
+  color: var(--dark);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: background 0.2s ease;
+}
+
+.tag-cloud a:hover {
+  background: var(--line);
+}
