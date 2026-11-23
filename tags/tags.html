@@ -9,15 +9,6 @@
     <link rel="stylesheet" href="../style.css">
 </head>
 
-<!-- Dokumenthistorie (intern):
-    Diese Seite soll :
-    - alle HTML-Seiten des Repositories erfassen,
-    - deren vorhandene Tags auslesen,
-    - eine Tag-Wolke erzeugen,
-    - beim Klick auf einen Tag die zugehörigen Seiten anzeigen.
--->
-
-
 <body>
 
     <header>
@@ -26,11 +17,18 @@
     </header>
 
     <main>
-        <div id="tag-cloud"></div>
+        <h2 id="tag-heading">Themen entdecken</h2>
+
+        <div id="tag-cloud" class="tag-cloud"></div>
+
         <div id="tag-results"></div>
+
+        <p>
+            <a href="../index.html">Zurück zur Startseite</a>
+        </p>
     </main>
 
-    <script src="tags.js"></script>
+    <script src="tags.js" defer></script>
 
 </body>
 

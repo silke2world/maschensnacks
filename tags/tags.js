@@ -1,5 +1,4 @@
 
-// Pfad zur tags.json relativ zur JavaScript-Datei
 const jsonPath = new URL("../tags.json", document.currentScript.src);
 
 fetch(jsonPath)
@@ -11,55 +10,36 @@ fetch(jsonPath)
   })
   .then(data => {
     const articles = data.articles || [];
+
     const tagCloud = document.getElementById("tag-cloud");
     const tagResults = document.getElementById("tag-results");
+    const heading = document.getElementById("tag-heading");
 
-    if (!tagCloud) {
-      console.error("Element #tag-cloud wurde nicht gefunden.");
-      return;
-    }
+    const params = new URLSearchParams(window.location.search);
+    const selectedTag = params.get("tag");
 
-    // Alle Tags sammeln und zählen
-    const tagCounts = {};
+    // =====================================
+    // ERGEBNISSEITE: ARTIKEL ZUM TAG
+    // =====================================
 
-    articles.forEach(article => {
-      (article.tags || []).forEach(tag => {
-        tagCounts[tag] = (tagCounts[tag] || 0) + 1;
-      });
-    });
+    if (tagResults && selectedTag) {
 
-    // Tag-Wolke erzeugen
-    tagCloud.innerHTML = "";
+      if (tagCloud) {
+        tagCloud.style.display = "none";
+      }
 
-    Object.keys(tagCounts)
-      .sort((a, b) => a.localeCompare(b, "de"))
-      .forEach(tag => {
-        const button = document.createElement("button");
-
-        button.textContent = tag;
-        button.className = "tag-button";
-        button.type = "button";
-
-        button.addEventListener("click", () => {
-          showArticles(tag);
-        });
-
-        tagCloud.appendChild(button);
-      });
-
-    // Zugehörige Artikel anzeigen
-    function showArticles(selectedTag) {
-      if (!tagResults) return;
-
-      tagResults.innerHTML = "";
-
-      const heading = document.createElement("h2");
-      heading.textContent = `Artikel mit dem Tag: ${selectedTag}`;
-      tagResults.appendChild(heading);
+      if (heading) {
+        heading.textContent = `Artikel zum Thema: ${selectedTag}`;
+      }
 
       const matchingArticles = articles.filter(article =>
         (article.tags || []).includes(selectedTag)
       );
+
+      if (matchingArticles.length === 0) {
+        tagResults.textContent = "Keine Artikel gefunden.";
+        return;
+      }
 
       const list = document.createElement("ul");
 
@@ -67,14 +47,7 @@ fetch(jsonPath)
         const item = document.createElement("li");
         const link = document.createElement("a");
 
-        // Funktioniert sowohl auf ROOT/index.html
-        // als auch auf ROOT/tags/tags.html
-        const pageUrl = new URL(
-          `../${article.url}`,
-          document.currentScript?.src || window.location.href
-        );
-
-        link.href = pageUrl.href;
+        link.href = "../" + article.url;
         link.textContent = article.title;
 
         item.appendChild(link);
@@ -82,7 +55,42 @@ fetch(jsonPath)
       });
 
       tagResults.appendChild(list);
+      return;
     }
+
+    // =====================================
+    // TAG-WOLKE
+    // =====================================
+
+    if (tagCloud) {
+      const tagCounts = {};
+
+      articles.forEach(article => {
+        (article.tags || []).forEach(tag => {
+          tagCounts[tag] = (tagCounts[tag] || 0) + 1;
+        });
+      });
+
+      tagCloud.innerHTML = "";
+
+      Object.keys(tagCounts)
+        .sort((a, b) => a.localeCompare(b, "de"))
+        .forEach(tag => {
+          const button = document.createElement("button");
+
+          button.textContent = tag;
+          button.className = "tag-button";
+          button.type = "button";
+
+          button.addEventListener("click", () => {
+            window.location.href =
+              "tags/tags.html?tag=" + encodeURIComponent(tag);
+          });
+
+          tagCloud.appendChild(button);
+        });
+    }
+
   })
   .catch(error => {
     console.error("Fehler beim Laden der Tags:", error);
