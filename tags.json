@@ -1,0 +1,29 @@
+{
+  "articles": [
+    {
+      "title": "Klappbündchen – Mein Strickwissen",
+      "url": "oberteile/klappbuendchen/index.html",
+      "tags": [
+        "Bündchen",
+        "Oberteile",
+        "Stricktechnik",
+        "Rollrand"
+      ]
+    },
+    {
+      "title": "Socken stricken: Fersenvarianten",
+      "url": "socken/fersenvarianten/index.html",
+      "tags": [
+        "Ferse",
+        "verkürzte Reihen",
+        "toe-up",
+        "cuff-down",
+        "Käppchenferse",
+        "Herzchenferse",
+        "Bumerangferse",
+        "Schnappferse",
+        "nachträgliche Ferse"
+      ]
+    }
+  ]
+}
