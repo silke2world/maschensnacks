@@ -12,7 +12,7 @@
     },
     {
       "title": "Socken stricken: Fersenvarianten",
-      "url": "socken/spitzenvarianten.html",
+      "url": "socken/fersenvarianten.html",
       "tags": [
         "Ferse",
         "verkürzte Reihen",
@@ -26,18 +26,11 @@
       ]
     },
     {
-      "title": "Socken stricken: Fersenvarianten",
-      "url": "socken/fersenvarianten.html",
+      "title": "Socken stricken: Spitzenvarianten",
+      "url": "socken/spitzenvarianten.html",
       "tags": [
-        "Ferse",
-        "verkürzte Reihen",
         "toe-up",
-        "cuff-down",
-        "Käppchenferse",
-        "Herzchenferse",
-        "Bumerangferse",
-        "Schnappferse",
-        "nachträgliche Ferse"
+        "cuff-down"
       ]
     }
   ]
