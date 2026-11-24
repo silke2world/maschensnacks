@@ -141,6 +141,16 @@ a:hover {
 /* Startseite */
 
 
+.hero {
+  padding: 35px 0 45px;
+  border-bottom: 1px solid var(--line);
+}
+
+.back-link {
+  margin-bottom: 30px;
+  font-size: 0.95rem;
+}
+
 .back-link a {
   color: var(--green);
   text-decoration: none;
