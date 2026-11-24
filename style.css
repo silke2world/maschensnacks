@@ -248,3 +248,27 @@ footer {
 .tag-cloud a:hover {
   background: var(--line);
 }
+
+#begriffe table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+#begriffe th,
+#begriffe td {
+  text-align: left;
+  padding: 10px 12px;
+  vertical-align: top;
+  box-sizing: border-box;
+}
+
+#begriffe th:first-child,
+#begriffe td:first-child {
+  width: 35%;
+}
+
+#begriffe th:last-child,
+#begriffe td:last-child {
+  width: 65%;
+}
